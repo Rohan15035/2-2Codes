@@ -1,0 +1,196 @@
+% This file can be called like python package in main.tex
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{booktabs}
+\begin{document}
+
+\section{Working With Images}
+
+Here is a paragraph of text before the figure. The figure below
+is not guaranteed to appear exactly here -- LaTeX may move it to
+wherever it fits best on the page.
+
+\begin{figure}[h] % [h] =="Please try to place this figure exactly where it appears in the source text, if there is enough room on the page."
+%  b-bottom , t-top, p-places the float on a separate page reserved for float . 
+ 
+  \centering
+  \includegraphics[width=0.6\textwidth]{example-image.png}
+  \caption{An example figure with a caption.}
+  \label{fig:example}
+\end{figure}
+
+Here is a paragraph of text after the figure.
+
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\textwidth]{example-image.png}
+  \caption{Second example}
+  \label{fig: example 2}
+\end{figure}
+
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|c|c|}
+    \hline
+    Method & Accuracy & Time Complexity \\
+    \hline
+    Rasterization & Medium & $O(n)$ \\
+    \hline
+    Ray Tracing & High & $O(n^2)$ \\
+    
+     & Very High & $O(n^3)$ \\
+     \hline
+    \multicolumn{2}{|c|}{Hybrid Method}& $O(n^2)$ \\
+    \hline
+  \end{tabular}
+  \caption{Comparison of Image Synthesis Techniques}
+  \label{tab:comparison}
+\end{table}
+
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|c|c|}
+    \hline
+    \multirow{2}{*}{Module} & \multicolumn{2}{c|}{Score} \\
+    \cline{2-3}
+     & Theory & Lab \\
+    \hline
+    Module A & 75 & 80 \\
+    Module B & 88 & 90 \\
+     & 85 & 87 \\
+    Module C & 70 & 72 \\
+    \hline
+  \end{tabular}
+  \caption{Module-wise Performance Summary}
+  \label{tab:modules}
+\end{table}
+
+
+\begin{table}[h]
+\centering
+  \begin{tabular}{|l|c|c|}
+    \hline
+    Method & Accuracy & Time Complexity \\
+    \hline
+    Rasterization & Medium & $O(n)$ \\
+    \hline
+    \multirow{2}{*}{Ray Tracing} & High & $O(n^2)$ \\
+    & Very High& $O(n^3)$\\
+    \hline
+    \multicolumn{2}{|c|}{Hybrid Method} & $O(n^2)$ \\
+    \hline
+  \end{tabular}
+  \caption{ Comparison of Image syntehesis techniques}
+\end{table}
+
+% Self-Practice
+\begin{table}
+\centering
+\begin{tabular}{|c|c|c|}
+  \hline
+  \multirow{2}{*}{Method} & \multicolumn{2}{c|}{Score} \\
+  \cline{2-3}
+  & Theory & Lab \\
+  \hline
+  Module A & 75 & 80\\
+  \multirow{2}{*}{Module B} & 88 & 90\\
+  & 85 & 87\\
+  \hline
+  Module C & 70 & 72\\
+  \hline
+  
+\end{tabular}
+\caption{Module-wise Performance Summary}
+\end{table}
+
+
+% Table-5
+\begin{table}[h]
+  \centering
+  \begin{tabular}{lcr}
+    \toprule
+    Item & Quantity & Price \\
+    \midrule
+    Apples & 10 & \$5.00 \\
+    Bananas & 6 & \$2.40 \\
+    Cherries & 200 & \$8.75 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Same data, booktabs style}
+\end{table}
+
+% Table -6 
+\begin{table}[h]
+  \centering
+  \begin{tabular}{lcr}
+    \toprule
+    Item & Quantity & Price \\
+    \midrule
+    Apples & 10 & \$5.00 \\
+    Bananas & 6 & \$2.40 \\
+    Cherries & 200 & \$8.75 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Same data, booktabs style}
+\end{table}
+
+%  Table -7 
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|c|c|c|}
+    \hline
+    Name & Q1 & Q2 & Q3 \\
+    \hline
+    Alice & 90 & & 88 \\
+     & 75 & 80 & \\
+    Charlie & & 70 & 65 \\
+    \hline
+  \end{tabular}
+  \caption{Quarterly scores with gaps}
+\end{table}
+% Table-8 
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|c|c|}
+    \hline
+    \multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{2026} \\
+    \cline{2-3}
+    Region & Q1 & Q2 \\
+    \hline
+    North & 120 & 130 \\
+    South & 95 & 110 \\
+    \hline
+  \end{tabular}
+  \caption{Regional sales by quarter}
+\end{table}
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|c|c|}
+    \hline
+    \multirow{2}{*}{Student} & \multicolumn{2}{c|}{Exam} \\
+    \cline{2-3}
+     & Midterm & Final \\
+    \hline
+    Dana & 78 & 82 \\
+    Evan & 91 & 89 \\
+    \hline
+  \end{tabular}
+  \caption{Exam results}
+\end{table}
+
+\end{document}
+
+
+
+

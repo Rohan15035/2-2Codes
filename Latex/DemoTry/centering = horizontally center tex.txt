@@ -1,0 +1,51 @@
+\centering = horizontally center text, images, tables
+\$5.00 --> allows dollar sign to be recognized as dollar sign instead of math mode
+\hfill between subfigures — horizontal fill, pushes the next subfigure away, distributing leftover space evenly.
+
+figures are floats 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\textwidth]{example-image.png}
+  \caption{Second example}
+  \label{fig: example 2}
+\end{figure}
+
+
+
+// Table 
+
+\begin{tabular}{|l|c|c|} --> alignment for each column 
+\hline -> horizontal line
+ & diye we move to the next column
+ single dollar signs around something is inline math mode
+
+\cline{2-3} — like \hline but only spans columns 2 through 3, leaving column 1 unruled where the merged "Module" cell sits.
+\multicolumn{2}{c|}{Score}
+\multirow{2}{*}{Module}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|c|c|} --> alignment for each column 
+    \hline 
+    Method & Accuracy & Time Complexity \\
+    \hline
+    Rasterization & Medium & $O(n)$ \\
+    \hline
+    Ray Tracing & High & $O(n^2)$ \\
+    
+     & Very High & $O(n^3)$ \\
+     \hline
+    &Hybrid Method  & $O(n^2)$ \\
+    \hline
+  \end{tabular}
+  \caption{Comparison of Image Synthesis Techniques}
+  \label{tab:comparison}
+\end{table}
+\end{document}
+
+
+\toprule: Draws a relatively thick line to cleanly start the table.
+
+\bottomrule: Draws a thick line (matching the top rule) to cleanly close the table.
+
+\midrule: Draws a thinner line used to separate the header row from the data rows.

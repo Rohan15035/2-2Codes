@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+% equation, align dile math environment e enter kori so we dont need to
+% write encapsulate between $ $.
+
+% equation --> single line of math
+% align allows multiple lines (\\, &) , \nonumber suppresses eq numbering in align mode
+% so that proti line e number na thake
+% & --> vertical alignment e help kore
+
+
+$x$ , $I_{ij}$ , $e^{x^2}$
+\begin{equation}
+    L=I_{ij}\cdot\cos(\theta) +R^2
+    \label{eq:lighting}
+\end{equation}
+
+
+\begin{align}
+    k &=\frac{ab}{cd}\\
+    f(x) &=x^2+2x+1 \nonumber \\
+        &= (x+1)^2
+\end{align}
+
+%  \geq, \leq, \neq, \approx
+\[
+  |y| =
+  \begin{cases}
+    y & \text{if } y \geq 0 \\ % text mode is important, as math mode e ulta palta ashto
+    -y & \text{if } y < 0
+  \end{cases}
+\] 
+% dfrac use korba cases er time e , frac ekhane size aulay dey
+%[1mm]--->this adds extra vertical spacing after that specific line, useful when cases with stacked fractions feel visually cramped against each other.
+
+\[
+  f(x_i) =
+  \begin{cases}
+    \dfrac{x_i^2}{\sigma^2} & \text{if } x_i \geq 0 \\[1mm] % [1mm ]
+    \dfrac{|x_i|}{\sigma} & \text{if } x_i < 0
+  \end{cases}
+\]
+
+
+\begin{equation}
+  T = \sum_{i=1}^{n} (x_i - \mu)^2
+    = \sum_{i=1}^{n} x_i^2 - 2\mu \sum_{i=1}^{n} x_i + n\mu^2
+  \label{eq:variance}
+\end{equation}
+
+
+\[
+  N(x_i, \mu, \sigma) = \frac{1}{\sqrt{2\pi}\sigma}
+    e^{-\frac{(x_i-\mu)^2}{2\sigma^2}}
+\]
+
+\[
+g(x_i)= \begin{cases}
+    \dfrac{x_i+1}{x_i-1} &\text{if } x_i \neq 1 \\
+     0 &\text{if } x_i = 1
+\end{cases}
+\]
+
+
+\begin{equation}
+  g(x_i)= \begin{cases}
+    \dfrac{x_i+1}{x_i-1} &\text{if } x_i \neq 1 \\
+     0 &\text{if } x_i =1
+\end{cases}
+\end{equation}
+
+% equations only get numbered with equation/align if you don't star them —
+%  equation* and align* exist as the "give me this environment but skip the number" versions,
+% an alternative to switching to \[...\]/align* when you want the same line-breaking behavior but no number. 
+
+
+
+
+\end{document}
+
+
