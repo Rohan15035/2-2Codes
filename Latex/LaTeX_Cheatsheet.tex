@@ -1,0 +1,328 @@
+% ============================================================
+%  LaTeX Cheat-Sheet  --  built from the CSE200 Online-1 files
+%  (Q1 Image Synthesis, Q2 Intro, Q3 Fireflies, Q4 Laplace, Q5 Solar System)
+%  Compile:  pdflatex LaTeX_Cheatsheet.tex   (run twice for the \ref numbers)
+%  Every snippet below is real syntax pulled from your own documents.
+% ============================================================
+\documentclass[10pt]{article}
+
+\usepackage[a4paper,landscape,margin=1cm]{geometry}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{parskip}
+
+\definecolor{headcol}{RGB}{40,80,170}
+\definecolor{codebg}{RGB}{245,246,250}
+\definecolor{cmdcol}{RGB}{170,40,40}
+
+% ---- style for the LaTeX-source snippets --------------------
+\lstset{
+    language=[LaTeX]TeX,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{cmdcol},
+    commentstyle=\color{gray}\itshape,
+    backgroundcolor=\color{codebg},
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    xleftmargin=3pt, xrightmargin=3pt,
+    aboveskip=3pt, belowskip=3pt,
+    frame=none,
+    showstringspaces=false,
+}
+
+% ---- compact coloured section heading -----------------------
+\newcommand{\hd}[1]{%
+    \par\medskip
+    {\color{headcol}\normalsize\bfseries #1}\par
+    {\color{headcol}\hrule height 1pt}\smallskip}
+
+\setlength{\columnsep}{18pt}
+\pagestyle{empty}
+
+\begin{document}
+\begin{center}
+    {\color{headcol}\LARGE\bfseries LaTeX Cheat-Sheet}\quad
+    {\small — grounded in your CSE200 Online-1 documents}
+\end{center}
+
+\begin{multicols}{2}
+
+% ============================================================
+\hd{1. Document Skeleton}
+The frame every one of your files shares.
+\begin{lstlisting}
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{graphicx, xcolor, enumitem}
+
+\title{Document Title}
+\author{Name\\ \small Affiliation}
+\date{}                 % empty -> no date
+\begin{document}
+\maketitle
+   ... content ...
+\end{document}
+\end{lstlisting}
+\texttt{\%} starts a comment. Blank line = new paragraph.
+
+% ============================================================
+\hd{2. Sectioning}
+\begin{lstlisting}
+\section{The Puzzle in the Forest}
+\subsection{A Firefly as a Clock}
+\subsection*{Circuit Model}   % * = unnumbered
+\section*{Conclusion}         % no number, no TOC
+\tableofcontents \newpage     % needs 2nd compile
+\end{lstlisting}
+Rename a heading (Q5): \verb|\renewcommand{\contentsname}{Contents}|
+
+% ============================================================
+\hd{3. Text \& Fonts}
+\begin{lstlisting}
+\textbf{bold}   \textit{italic}   \emph{emphasis}
+\underline{underlined}   \texttt{monospace}
+\textsc{Small Caps}
+{\Large big} {\small small} {\huge huge}
+\textcolor{blue}{coloured words}
+super\textsuperscript{1}   x\textsubscript{0}
+\LaTeX   \qquad   ~ (non-break space)
+--- (em dash)   -- (en/range)   ` ' quotes
+\end{lstlisting}
+Size steps: \verb|\tiny \scriptsize \footnotesize \small|
+\verb|\normalsize \large \Large \LARGE \huge \Huge|
+
+% ============================================================
+\hd{4. Lists  (enumitem)}
+\begin{lstlisting}
+\begin{itemize}
+    \item First point
+    \item[\textbf{Note}] custom label
+\end{itemize}
+
+\begin{enumerate}[label=\Roman*.]   % I. II. III.
+    \item Drift
+\end{enumerate}
+% other labels: (\Roman*)  (\alph*)  \arabic*)
+
+\begin{itemize}[label=$\diamond$]   % custom bullet
+    \item ...
+\end{itemize}
+
+\begin{description}[style=nextline]
+    \item[Coupling] explanation on next line
+\end{description}
+\end{lstlisting}
+Handy keys: \verb|nosep|, \verb|leftmargin=2em|, \verb|label=$\oplus$|.
+Lists nest freely (see Q1/Q2).
+
+% ============================================================
+\hd{5. Inline \& Display Math}
+\begin{lstlisting}
+Inline: $\theta_i(t) \in [0,2\pi)$, $x_i$, $z^2$.
+
+Unnumbered display:
+\[  \Delta = \theta_2 - \theta_1  \]
+
+Numbered, with a label:
+\begin{equation}\label{eq:kuramoto}
+    T_i = \frac{2\pi}{\omega_i}
+\end{equation}
+\end{lstlisting}
+
+% ============================================================
+\hd{6. Multi-line Math}
+\begin{lstlisting}
+% aligned at &, each line numbered
+\begin{align}
+    c^2 &= a^2 - b^2 \\
+    e   &= \frac{c}{a} \notag   % \notag = no number
+\end{align}
+\begin{align*} ... \end{align*}  % none numbered
+
+% one number for a multi-line derivation
+\begin{equation}
+  \begin{split}
+    \mathcal{L}\{1\} &= \int_0^\infty e^{-st}\,dt \\
+                     &= \frac{1}{s}
+  \end{split}
+\end{equation}
+
+% piecewise
+f(x)=\begin{cases}
+    x^2/\sigma^2 & \text{if } x \ge 0 \\
+    |x|/\sigma   & \text{if } x < 0
+\end{cases}
+\end{lstlisting}
+
+% ============================================================
+\hd{7. Math Symbols You Use}
+\begin{lstlisting}
+Greek:  \theta \omega \sigma \mu \pi \alpha
+        \beta \gamma \Delta \Lambda \varpi \varepsilon
+Ops:    \sum_{j=1}^{N}  \int_0^\infty  \prod
+        \frac{a}{b}  \dfrac{a}{b}  \sqrt{x}
+        \frac{\mathrm{d}\theta}{\mathrm{d}t}
+Rel:    \le \ge \approx \propto \equiv \in \pmod
+        \to \Rightarrow \implies \xrightarrow{L}
+Deco:   \bar x \hat x \vec x \dot x  \bmod
+        \boxed{|\Delta\omega| \le K}
+Cal:    \mathcal{L}  \mathbb{R}  M_\odot  \Gamma^\mu_{\nu}
+\end{lstlisting}
+\verb|\,| thin space, \verb|\quad|/\verb|\qquad| wide space,
+\verb|\text{...}| for words inside math.
+
+% ============================================================
+\hd{8. Tables}
+\begin{lstlisting}
+\begin{table}[ht]
+  \centering
+  \caption{Caption above or below}
+  \label{tab:x}
+  \begin{tabular}{|l|c|c|}      % l/c/r + | rules
+    \hline
+    \multirow{2}{*}{Planet}
+      & \multicolumn{2}{c|}{Orbit} \\
+    \cline{2-3}
+      & $a$ & $e$ \\
+    \hline
+    Jupiter & 5.204 & 0.049 \\
+    \hline
+  \end{tabular}
+\end{table}
+\end{lstlisting}
+\textbf{booktabs} (Q3): \verb|\toprule \midrule \bottomrule| (no vertical bars).\\
+\textbf{Coloured rows} (needs \verb|\usepackage[table]{xcolor}|):
+\verb|\rowcolor{green!10}|\\
+\textbf{Wrapping cell}: column type
+\verb|>{\raggedright\arraybackslash}p{4.3cm}|
+
+% ============================================================
+\hd{9. Figures}
+\begin{lstlisting}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img.png}
+    \caption{...}\label{fig:x}
+\end{figure}
+\end{lstlisting}
+\textbf{Text wraps around} (wrapfig, Q3/Q4):
+\begin{lstlisting}
+\begin{wrapfigure}{r}{0.42\textwidth}
+  \centering
+  \includegraphics[width=0.40\textwidth]{f.jpg}
+  \caption{...}\label{fig:f}
+\end{wrapfigure}
+\end{lstlisting}
+\textbf{Side-by-side} (subcaption, Q1/Q5):
+\begin{lstlisting}
+\begin{subfigure}{0.3\textwidth}\centering
+    \includegraphics[width=\textwidth]{a}
+    \caption{Output A}
+\end{subfigure}\hfill
+\begin{subfigure}{0.3\textwidth} ... \end{subfigure}
+\end{lstlisting}
+\verb|\hfill| spreads them; blank line starts a new row.
+
+% ============================================================
+\hd{10. Cross-References}
+\begin{lstlisting}
+Give a \label{...} after the caption/equation,
+then refer to it anywhere:
+Table~\ref{tab:sine}      fig.~\ref{fig:f}
+eq.~\eqref{eq:kuramoto}   % (adds parentheses)
+Listing~\ref{lst:rc}
+\end{lstlisting}
+\verb|~| glues the word to the number so they never split across a line.
+\emph{Always compile twice} to resolve numbers.
+
+% ============================================================
+\hd{11. Colour (xcolor)}
+\begin{lstlisting}
+\definecolor{titleblue}{RGB}{40,80,170}
+\textcolor{titleblue}{words}
+\textcolor{green!55!black}{Positive}   % mix
+\rowcolor{red!10}                      % table row
+red!70!black  gray!15  green!45!black  % blends
+\end{lstlisting}
+
+% ============================================================
+\hd{12. Code Listings (Q4)}
+\begin{lstlisting}
+\usepackage{listings}
+\lstdefinestyle{pystyle}{
+    language=Python, basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue!70!black}\bfseries,
+    numbers=left, frame=single, breaklines=true}
+
+% pull code from an external file:
+\lstinputlisting[style=pystyle,
+    caption={...}, label=lst:rc]{rc_response.py}
+\end{lstlisting}
+
+% ============================================================
+\hd{13. Theorems \& Proof (Q5)}
+\begin{lstlisting}
+\usepackage{amsthm}
+\newtheorem{proposition}{Proposition}[section]
+
+\begin{proposition}[Weak field]\label{prop:x}
+    Statement of the result.
+\end{proposition}
+\begin{proof}
+    Argument.   % gets the QED square
+\end{proof}
+\end{lstlisting}
+
+% ============================================================
+\hd{14. Algorithms (Q3)}
+\begin{lstlisting}
+\usepackage{algorithm, algpseudocode}
+\begin{algorithm}[ht]
+  \caption{Simulate the Kuramoto model}
+  \begin{algorithmic}[1]
+    \Require Phases, $K$, step $h$, steps $M$
+    \For{$m \gets 1$ \textbf{to} $M$}
+        \State $v_i \gets \omega_i + \frac{K}{N} q_i$
+    \EndFor
+    \State \Return $\theta_1,\dots,\theta_N$
+  \end{algorithmic}
+\end{algorithm}
+\end{lstlisting}
+
+% ============================================================
+\hd{15. Links, Footnotes, Citations}
+\begin{lstlisting}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue,
+            urlcolor=blue, citecolor=black}
+\href{https://...}{clickable text}
+A remark here.\footnote{The note text.}
+
+Reference~\cite{sarfati2021}.
+\begin{thebibliography}{9}
+  \bibitem{sarfati2021}
+    Author. ``Title''. \emph{Journal} (2021).
+\end{thebibliography}
+\end{lstlisting}
+
+% ============================================================
+\hd{16. Spacing \& Boxes}
+\begin{lstlisting}
+\\[0.3em]  break + extra vertical space
+\vspace{1em}  \bigskip \medskip \smallskip
+\newpage  \par  \noindent  \centering
+\hfill (push apart)   \quad \qquad (h-space)
+\thispagestyle{empty}   % no page number
+\end{lstlisting}
+
+\end{multicols}
+\end{document}

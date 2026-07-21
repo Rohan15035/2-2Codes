@@ -1,0 +1,151 @@
+% ============================================================
+%  CSE200 Online-1 (A2)  ->  "Mathematical Foundations of Image Synthesis"
+%  Compile:  pdflatex Q1_ImageSynthesis.tex
+%  Needs the `mwe` package for the example-image-a/b/c demo images.
+% ============================================================
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}      % equation, align, cases, split
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subcaption}   % subfigures
+\usepackage{multirow}     % multirow table cells
+\usepackage{mwe}          % provides example-image-a / -b / -c
+
+\title{Mathematical Foundations of Image Synthesis}
+\author{Your Name (Your Student ID)}
+\date{January 4, 2026}
+
+\begin{document}
+\maketitle
+
+% ------------------------------------------------------------
+\section{Introduction}
+Image synthesis is the process of generating images from mathematical and
+algorithmic descriptions. Modern graphics systems rely on \textbf{precise
+mathematical models} and efficient computation. \textit{Even small numerical
+errors} can result in visible artifacts in rendered images.
+
+Typical formulations involve scalar values such as $x$, indexed parameters like
+$I_{ij}$, and exponential terms $e^{x^2}$. These elements are combined to
+simulate realistic lighting behavior.
+
+% ------------------------------------------------------------
+\section{Core Components}
+
+\subsection{Rendering Pipeline}
+The rendering pipeline consists of the following stages:
+\begin{itemize}
+    \item Scene Definition
+    \item Camera Configuration
+    \begin{itemize}
+        \item Light Placement
+    \end{itemize}
+    \item[\textbf{Important}] Shading Model
+    \begin{itemize}
+        \item Diffuse Shading
+        \item Specular Highlights
+    \end{itemize}
+\end{itemize}
+
+\subsection{Execution Order}
+\begin{enumerate}
+    \item Input Processing
+    \item Ray Construction
+    \begin{enumerate}
+        \item Primary Rays
+        \item Secondary Rays
+    \end{enumerate}
+    \item Intersection Evaluation
+    \begin{itemize}
+        \item Object Hit Test
+    \end{itemize}
+\end{enumerate}
+
+% ------------------------------------------------------------
+\section{Mathematical Modeling}
+Light interaction with surfaces can be expressed using the following equations.
+\begin{equation}
+    L = I_{ij}\cdot \cos(\theta) + R^2
+\end{equation}
+\[
+    k = \frac{ab}{cd}
+\]
+\begin{equation}
+    \begin{split}
+        f(x) &= x^2 + 2x + 1 \\
+             &= (x+1)^2
+    \end{split}
+\end{equation}
+\begin{align*}
+    |y| &= \begin{cases} y  & \text{if } y \ge 0 \\ -y & \text{if } y < 0 \end{cases}\\[1ex]
+    p(t) &= \begin{cases}
+                0,            & t < 0, \\
+                e^{-t},       & 0 \le t < 3, \\
+                \ln(t-2),     & t \ge 3
+            \end{cases}\\[1ex]
+    \mathcal{N}(x_i,\mu,\sigma) &= \frac{1}{\sqrt{2\pi}\,\sigma}\,
+        e^{-\frac{(x_i-\mu)^2}{2\sigma^2}}
+\end{align*}
+
+% ------------------------------------------------------------
+\section{Performance Comparison}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        Method & Accuracy & Time Complexity \\
+        \hline
+        Rasterization & Medium & $O(n)$ \\
+        \hline
+        \multirow{2}{*}{Ray Tracing} & High      & $O(n^2)$ \\
+                                     & Very High & $O(n^3)$ \\
+        \hline
+        \multicolumn{2}{|c|}{Hybrid Method} & $O(n^2)$ \\
+        \hline
+    \end{tabular}
+    \caption{Comparison of Image Synthesis Techniques}
+    \label{tab:perf}
+\end{table}
+
+The results in Table~\ref{tab:perf} highlight the trade-off between accuracy and
+computational cost.
+
+% ------------------------------------------------------------
+\section{Visual Illustration}
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-a}
+        \caption{Output A}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-b}
+        \caption{Output B}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-c}
+        \caption{Output C}
+    \end{subfigure}
+    \caption{Comparison of three rendering outputs.}
+    \label{fig:outputs}
+\end{figure}
+
+Figure~\ref{fig:outputs} compares three different rendering outputs arranged in a
+single row.
+
+% ------------------------------------------------------------
+\section{Conclusion}
+Image synthesis combines \underline{mathematical precision}, algorithmic design,
+and efficient implementation. As scene complexity increases, choosing the
+appropriate method becomes critical for balancing quality and performance.
+
+\end{document}

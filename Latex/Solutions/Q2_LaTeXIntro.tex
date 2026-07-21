@@ -1,0 +1,142 @@
+% ============================================================
+%  CSE200 Online-1 (C2)  ->  "CSE200: Online-1 on LaTeX"
+%  Compile:  pdflatex Q2_LaTeXIntro.tex
+%  Needs the `mwe` package for the example-image-a/b/c demo images.
+% ============================================================
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{mwe}
+
+\title{CSE200: Online-1 on \LaTeX}
+\author{Your Name (Student ID)}
+\date{January 3, 2026}
+
+\begin{document}
+\maketitle
+
+% ------------------------------------------------------------
+\section{Introduction}
+Document preparation systems are essential for producing structured and
+professional technical documents. \textbf{\LaTeX} allows authors to focus on
+content while maintaining consistent formatting. This article demonstrates
+formatted text, lists, equations, tables, and figures using commands taught in
+class.
+
+\subsection{Text Emphasis and Fonts}
+This sentence contains \textbf{bold text}, \textit{italic text},
+\emph{emphasized text}, and \underline{underlined text}. Font sizes can also vary
+such as {\Large Large text}, {\small small text}, and {\huge huge text}.
+
+% ------------------------------------------------------------
+\section{List Structures}
+
+\subsection{Mixed and Nested Lists}
+\begin{itemize}
+    \item Primary Feature
+    \item Secondary Features
+    \begin{enumerate}
+        \item Formatting control
+        \item Mathematical typesetting
+        \begin{itemize}
+            \item Inline math
+            \item Display math
+        \end{itemize}
+    \end{enumerate}
+    \item[\textbf{Note}] Lists can be customized.
+\end{itemize}
+
+% ------------------------------------------------------------
+\section{Mathematical Modeling}
+Mathematical expressions are often used to represent data relationships. Consider
+variables $x_i$, $y$, and $z^2$.
+
+% ------------------------------------------------------------
+\section{Mathematical Modeling}
+Mathematical expressions are commonly used to describe relationships among
+variables. Let the variables be $x_i$, $y_j$, and $\sigma^2$.
+
+\subsection{Displayed Equations}
+\begin{equation}
+    y_j = \alpha x_j^2 + \beta x_j + \gamma
+\end{equation}
+\begin{equation}
+    \begin{split}
+        T &= \sum_{i=1}^{n}(x_i-\mu)^2 \\
+          &= \sum_{i=1}^{n} x_i^2 - 2\mu\sum_{i=1}^{n} x_i + n\mu^2
+    \end{split}
+\end{equation}
+\[
+    f(x_i) = \begin{cases}
+        \dfrac{x_i^2}{\sigma^2} & \text{if } x_i \ge 0 \\[2ex]
+        \dfrac{|x_i|}{\sigma}   & \text{if } x_i < 0
+    \end{cases}
+\]
+
+% ------------------------------------------------------------
+\section{Tabular Data Presentation}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \multirow{2}{*}{\textbf{Module}} & \multicolumn{2}{c|}{\textbf{Score}} \\
+        \cline{2-3}
+                 & Theory & Lab \\
+        \hline
+        Module A & 75 & 80 \\
+        \hline
+        \multirow{2}{*}{Module B} & 88 & 90 \\
+                                  & 85 & 87 \\
+        \hline
+        Module C & 70 & 72 \\
+        \hline
+    \end{tabular}
+    \caption{Module-wise Performance Summary}
+    \label{tab:modules}
+\end{table}
+
+% ------------------------------------------------------------
+\section{Visual Comparison}
+
+\subsection{Asymmetric Subfigure Layout}
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{0.6\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-a}
+        \caption{Main Diagram}
+    \end{subfigure}
+
+    \vspace{1em}
+    \begin{subfigure}{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-b}
+        \caption{Detail B}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-c}
+        \caption{Detail C}
+    \end{subfigure}
+    \caption{Asymmetric layout with one dominant figure}
+    \label{fig:asym}
+\end{figure}
+
+Figure~\ref{fig:asym} illustrates how visual elements can be arranged
+systematically within a document.
+
+% ------------------------------------------------------------
+\section*{Conclusion}
+This article highlighted the importance of \textbf{structured writing} using
+\LaTeX. The use of \textit{formatted text}, mathematical expressions, tables, and
+figures improves both \underline{readability} and presentation quality.
+
+\end{document}

@@ -1,0 +1,80 @@
+\begin{quote}\itshape
+What is the smallest timing rule that can turn many independent flash cycles into
+one coherent display?
+\end{quote}
+
+
+
+\title{\textbf{\textcolor{titleblue}{Fireflies in Unison}}\\[0.3em]
+       \large How Simple Timing Rules Create a Collective Rhythm}
+\author{Yoshiki Kuramoto\textsuperscript{1} and Steven H. Strogatz\textsuperscript{2}\\[0.3em]
+        {\small \textsuperscript{1}Kyoto, Japan \qquad
+         \textsuperscript{2}Ithaca, New York, USA}}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+
+
+The three parts of eq.~\eqref{eq:kuramoto} have direct meanings:
+\begin{description}[style=nextline]
+    \item[Internal clock] $\omega_i$ is the rate the firefly would follow alone.
+    \item[Coupling strength] $K \ge 0$ measures how strongly flashes influence one
+          another.
+    \item[Timing correction] $\sin(\theta_j - \theta_i)$ tells firefly $i$ whether
+          another phase is ahead or behind.
+\end{description}
+
+
+
+
+\begin{table}[ht]
+    \centering
+    \caption{How a neighboring firefly affects firefly $i$.}
+    \label{tab:sine}
+    \begin{tabular}{l l l >{\raggedright\arraybackslash}p{4.3cm}}
+        \toprule
+        \textbf{Relative position} & \textbf{Phase difference} &
+        \textbf{Sine value} & \textbf{Effect on firefly $i$} \\
+        \midrule
+        \rowcolor{green!10}
+        Neighbor ahead  & $0 < \theta_j-\theta_i < \pi$  &
+            \textbf{\textcolor{green!55!black}{Positive}} & Speeds up its phase. \\
+        \rowcolor{gray!15}
+        Phases aligned  & $\theta_j-\theta_i = 0$        &
+            \textbf{Zero} & Makes no correction. \\
+        \rowcolor{red!10}
+        Neighbor behind & $-\pi < \theta_j-\theta_i < 0$ &
+            \textbf{\textcolor{red!70!black}{Negative}} & Slows down its phase. \\
+        \rowcolor{gray!15}
+        Opposite phases & $\theta_j-\theta_i = \pi$      &
+            \textbf{Zero} & Produces no preferred direction of correction. \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+
+itemize -- unordered
+enumerate -- ordered 
+
+
+
+\begin{algorithm}[ht]
+    \caption{Simulate the Kuramoto model}
+    \begin{algorithmic}[1]
+        \Require Phases $\theta_i$, frequencies $\omega_i$, coupling $K$, step
+                 size $h$, and number of steps $M$
+        \For{$m \gets 1$ \textbf{to} $M$}
+            \For{each firefly $i$}
+                \State $q_i \gets \displaystyle\sum_{j=1}^{N}\sin(\theta_j-\theta_i),
+                        \quad v_i \gets \omega_i + \frac{K}{N} q_i$
+            \EndFor
+            \State Update all phases simultaneously:
+                   $\theta_i \gets (\theta_i + h v_i) \bmod 2\pi$
+        \EndFor
+        \State \Return $\theta_1,\dots,\theta_N$
+    \end{algorithmic}
+\end{algorithm}
