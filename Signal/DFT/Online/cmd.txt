@@ -1,0 +1,32 @@
+# CSE 220 -- Online on DFT & FFT -- the exact commands that produced outputs/
+
+# ------------------------------------------ A1/A2: Fourier Hybrid Image
+python3 hybrid_image_template.py \
+    --low-image images/sunset512.png \
+    --high-image images/skyline512.png \
+    --kernel-size 31 --engine fft \
+    --out-dir outputs/lab_hybrid_student
+
+# ------------------------------------- B1/B2: Fourier Magnitude-Phase Swap
+python3 magnitude_phase_swap_template.py \
+    --image-a images/sunset512.png \
+    --image-b images/skyline512.png --engine fft \
+    --out-dir outputs/lab_phase_swap_student
+
+# ------------------------------------------------ RGB paths (--color)
+python3 hybrid_image_template.py --low-image images/sunset512.png \
+    --high-image images/skyline512.png --kernel-size 31 --engine fft --color \
+    --out-dir outputs/lab_hybrid_student_rgb
+python3 magnitude_phase_swap_template.py --image-a images/sunset512.png \
+    --image-b images/skyline512.png --engine fft --color \
+    --out-dir outputs/lab_phase_swap_student_rgb
+
+# ------------------------------ Bonus: the offline ArbitraryLengthFFT engine
+# The hybrid runs at the exact linear-convolution size 542 x 542 instead of
+# padding up to 1024 x 1024.
+python3 hybrid_image_template.py --low-image images/sunset512.png \
+    --high-image images/skyline512.png --kernel-size 31 --engine arbitrary \
+    --out-dir outputs/bonus/lab_hybrid_arbitrary
+python3 magnitude_phase_swap_template.py --image-a images/sunset512.png \
+    --image-b images/skyline512.png --engine arbitrary \
+    --out-dir outputs/bonus/lab_phase_swap_arbitrary
